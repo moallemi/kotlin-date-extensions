@@ -13,6 +13,9 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'me.moallemi.tools:kotlin-date-range:1.0.0'
+
+    testImplementation 'junit:junit:4.13'
 }
 
 compileKotlin {
@@ -24,7 +27,11 @@ compileTestKotlin {
 
 spotless {
     kotlin {
+        target '**/*.kt'
+        targetExclude("$buildDir/**/*.kt")
+        targetExclude('bin/**/*.kt')
+
         ktlint("0.36.0")
-        licenseHeaderFile project.rootProject.file('gradle/copyright.kt')
+        licenseHeaderFile rootProject.file('gradle/copyright.txt')
     }
 }
